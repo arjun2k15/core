@@ -71,6 +71,9 @@ function five0BaseOptions() {
         'disableIabSecureLogging': false,
         'draggable': false,
         'exitOnClose': false,
+        'expiremental': {
+            'disableInitialReload': false
+        },
         'frame': true,
         'frameConnect': '',
         'hideOnBlur': false,
