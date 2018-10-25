@@ -65,6 +65,7 @@ module.exports.applicationApiMap = {
     'remove-tray-icon': removeTrayIcon,
     'restart-application': restartApplication,
     'run-application': runApplication,
+    'send-application-log': sendAppLog,
     'set-shortcuts': { apiFunc: setShortcuts, apiPath: '.setShortcuts' },
     'set-tray-icon': setTrayIcon,
     'set-application-zoom-level': setApplicationZoomLevel,
@@ -75,6 +76,10 @@ module.exports.applicationApiMap = {
 module.exports.init = function() {
     apiProtocolBase.registerActionMap(module.exports.applicationApiMap, 'Application');
 };
+
+function sendAppLog(ack, nack) {
+    
+}
 
 function setTrayIcon(identity, rawMessage, ack, nack) {
     let message = JSON.parse(JSON.stringify(rawMessage));
