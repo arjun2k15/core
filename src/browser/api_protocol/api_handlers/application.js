@@ -77,8 +77,11 @@ module.exports.init = function() {
     apiProtocolBase.registerActionMap(module.exports.applicationApiMap, 'Application');
 };
 
-function sendAppLog(ack, nack) {
-    
+function sendAppLog(identity, message) {
+    const payload = message.payload;
+    const appIdentity = apiProtocolBase.getTargetApplicationIdentity(payload);
+
+    return Application.sendAppLog(appIdentity);
 }
 
 function setTrayIcon(identity, rawMessage, ack, nack) {
@@ -320,7 +323,7 @@ function runApplication(identity, message, ack, nack) {
         className: 'window',
         eventName: 'fire-constructor-callback'
     };
-    
+
     if (coreState.getAppRunningState(uuid)) {
         Application.emitRunRequested(appIdentity);
         nack(`Application with specified UUID is already running: ${uuid}`);
