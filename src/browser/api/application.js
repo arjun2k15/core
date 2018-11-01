@@ -886,7 +886,7 @@ Application.sendAppLog = function(identity) {
 
     const options = {
         topic: 'application',
-        action: 'send-application-log',
+        action: 'application-log-send',
         sourceUrl: app._configUrl
     };
 
